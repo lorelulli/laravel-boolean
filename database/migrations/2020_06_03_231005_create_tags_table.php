@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateTagTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('tag', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('tags', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')->on('users');
-          $table->string('name');
-          $table->timestamps();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tag');
+        Schema::dropIfExists('tags');
     }
 }

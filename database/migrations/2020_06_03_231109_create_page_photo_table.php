@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatePageTagTable extends Migration
+class CreatePagePhotoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePageTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_tag', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('page_photo', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('page_id');
 
             $table->foreign('page_id')->references('id')->on('pages');
-            $table->unsignedBigInteger('tag_id');
+            $table->unsignedBigInteger('photo_id');
 
-            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreign('photo_id')->references('id')->on('photos');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreatePageTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_tag');
+        Schema::dropIfExists('page_photo');
     }
 }

@@ -1,4 +1,4 @@
-@php
+{{-- @php
 $pages = [
   [
     'id' => 1,
@@ -31,7 +31,7 @@ $pages = [
     ],
   ],
 ];
-@endphp
+@endphp --}}
 @extends('layouts.app')
 @section('content')
     <div class="container">
@@ -70,10 +70,10 @@ $pages = [
                 <tr>
                   <td>{{$page['id']}}</td>
                   <td>{{$page['title']}}</td>
-                  <td>{{$page['category']}}</td>
+                  <td>{{$page->category->name}}</td>
                   <td>
                     @foreach ($page['tags'] as $tag)
-                      {{$tag}}
+                      {{$tag->name}}
                       @if (!$loop->last)
                           ,
                       @endif

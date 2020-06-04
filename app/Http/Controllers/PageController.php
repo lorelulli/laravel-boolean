@@ -14,7 +14,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $pages = Page::all()->where('visible',1);
+
+        return view('guest.index', compact('pages'));
     }
 
     /**
